@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+option csharp_namespace = "GrpcService";
+
+package Calc;
+
+service Calculate {
+  rpc Exec (ExponentiationRequest) returns (ExponentiationResult);
+}
+
+message ExponentiationRequest {
+  int32 value = 1;
+  enum Op {
+    square = 0;
+    cube = 1;
+  };
+  Op operation = 2;
+}
+
+message ExponentiationResult {
+  double result = 1;
+}
